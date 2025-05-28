@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %} Default_title {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    {% include 'partials/header.html' %}
+
+    <!-- Block where child templates will inject content -->
+    <div class="content">
+        {% block content %} Welcome to my DTL page. {% endblock content %}
+    </div>
+    
+    {% include 'partials/footer.html' %}
+</body>
+</html>

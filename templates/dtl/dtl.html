@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ DTL }}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class='content'>
+        <h1>{{ DTL_Page }}</h1>
+
+        <!-- Conditional if statement -->
+        {% if show_message %}
+            <p>{{ message }}</p>
+        {% else %}
+            <p>No message available.</p>
+        {% endif %}
+
+        <!-- For loop to display the items in the list -->
+        <ul>
+            {% for item in items %}
+                <li>{{ item|upper }}</li>
+                <p>Our products are {{ item }}</p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

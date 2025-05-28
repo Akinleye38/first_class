@@ -1,0 +1,52 @@
+{% extends "partials/base.html" %}
+{% block title %}
+Authors And Books
+{% endblock title %}
+{% block content %}
+<a href="{% url 'home' %}">Go to Library home</a>
+<!-- All Authors Ordered by Last Name -->
+<h2>All Authors</h2>
+<ul>
+    {% for author in authors %}
+        <li>{{ author.first_name}}  {{ author.last_name}}  (Born: {{ author.birth_date}})</li>
+    {% endfor %}
+</ul>
+
+<!-- Authors Born Before 1950 -->
+
+<h2>Authors Born Before 1950</h2>
+<ul>
+    {% for author in old_authors %}
+        <li>{{ author.first_name }} {{ author.last_name }} (Born: {{ author.birth_date}})</li>
+    {% endfor %}
+</ul>
+
+<!-- Authors with Books Published -->
+<h2>Authors with Published Books</h2>
+<ul>
+    {% for author in authors_with_books %}
+        <li>{{ author.first_name }} {{ author.last_name }}</li>
+        <ul>
+            {% for book in author.book_set.all %}
+                <li>{{ book.title }} (Published: {{ book.published_on }})</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>
+
+<!-- Specific Author: John Doe -->
+<h2>Books by John Doe</h2>
+<ul>
+    {% for book in specific_author.book_set.all %}
+        <li>{{ book.title }} (Published: {{ book.publication_date }})</li>
+    {% endfor %}
+</ul>
+<!--Recently Published Books  -->
+<h2>Recently Published Books</h2>
+
+<ul>
+    {% for book in recent_books %}
+        <li>{{ book.title }} (Published: {{ book.published_on }})</li>
+    {% endfor %}
+</ul>
+{% endblock content %}
